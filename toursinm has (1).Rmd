@@ -1,0 +1,65 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+Import Dataset
+```{r}
+data=read.csv("C:/Users/shain/Downloads/international-tourist new.csv")
+print(data)
+```
+Summary of Dataset
+```{r}
+summary(data)
+```
+Display Data Rows
+```{r}
+head(data,5)
+```
+Identify Missing Values
+```{r}
+is.na(data)
+```
+Data Visualization
+```{r}
+library(ggplot2)
+ggplot(data,aes(x=International.tourist.arrivals.by.region
+,y=Year,color=country))+
+  geom_point()+
+ggtitle("Scatter Plot of International.tourist.arrivals.by.region
+ vs Year,colored by country")
+```
+Box Plot
+```{r}
+ggplot(data,aes(x=International.tourist.arrivals.by.region
+,y=Year,color=country))+
+  geom_boxplot() +
+  ggtitle("Box Plot of International.tourist.arrivals.by.region
+ vs.Year")
+```
+Liner Regression
+```{r}
+ggplot(data, aes(x = International.tourist.arrivals.by.region
+, y = Year)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = " International.tourist.arrivals.by.region
+", y = "Year") +
+  ggtitle("Linear Regression:  International.tourist.arrivals.by.region
+ vs Year ")
+```
+Regression Model
+```{r}
+model=lm(International.tourist.arrivals.by.region~Year,data=data)
+summary(model)
+```
+```{r}
+unique(data$Year)
+```
+
+
+
+
+
+
+
+
